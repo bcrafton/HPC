@@ -1,0 +1,109 @@
+Sender: LSF System <lsfadmin@compute-0-081>
+Subject: Job 584135: <Brian-Hello> in cluster <mghpcc_cluster1> Done
+
+Job <Brian-Hello> was submitted from host <discovery4> by user <crafton.b> in cluster <mghpcc_cluster1>.
+Job was executed on host(s) <24*compute-0-081>, in queue <ser-par-10g-2>, as user <crafton.b> in cluster <mghpcc_cluster1>.
+                            <8*compute-0-088>
+</home/crafton.b> was used as the home directory.
+</home/crafton.b/hello_world_mpi> was used as the working directory.
+Started at Wed Feb 17 19:37:05 2016
+Results reported at Wed Feb 17 19:37:37 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -J Brian-Hello
+#BSUB -o output32
+#BSUB -e error
+#BSUB -n 32
+#BSUB -q ser-par-10g-2
+#BSUB cwd /home/crafton.b/hello_world_mpi/
+cd /home/crafton.b/hello_world_mpi/
+
+rm error
+rm hello_mpi
+rm output32
+
+tempfile1=hostlistrun
+tempfile2=hostlist-tcp
+echo $LSB_MCPU_HOSTS > $tempfile1
+declare -a hosts
+read -a hosts < ${tempfile1}
+for ((i=0; i<${#hosts[@]}; i += 2)) ;
+ do
+ HOST=${hosts[$i]}
+ CORE=${hosts[(($i+1))]}
+ echo $HOST:$CORE >> $tempfile2
+done
+
+mpiCC -o hello_mpi q4.cpp
+mpirun -np 32 -prot -TCP -lsf ./hello_mpi 10000000
+
+mpiCC -o hello_mpi q4.cpp
+mpirun -np 32 -prot -TCP -lsf ./hello_mpi 100000000
+
+mpiCC -o hello_mpi q4.cpp
+mpirun -np 32 -prot -TCP -lsf ./hello_mpi 1000000000
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :               558.00 sec.
+    Max Memory :             1979 MB
+    Average Memory :         14.00 MB
+    Total Requested Memory : -
+    Delta Memory :           -
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               6321 MB
+
+    Max Processes :          10
+    Max Threads :            10
+
+The output (if any) follows:
+
+Host 0 -- ip 10.100.8.249 -- ranks 0 - 23
+Host 1 -- ip 10.100.9.22 -- ranks 24 - 31
+
+ host | 0    1
+======|===========
+    0 : SHM  TCP
+    1 : TCP  SHM
+
+ Prot -  All Intra-node communication is: SHM
+ Prot -  All Inter-node communication is: TCP
+
+problem size: 10000000 dist: 3162.277660 time taken 0.317831
+Host 0 -- ip 10.100.8.249 -- ranks 0 - 23
+Host 1 -- ip 10.100.9.22 -- ranks 24 - 31
+
+ host | 0    1
+======|===========
+    0 : SHM  TCP
+    1 : TCP  SHM
+
+ Prot -  All Intra-node communication is: SHM
+ Prot -  All Inter-node communication is: TCP
+
+problem size: 100000000 dist: 10000.000000 time taken 1.196982
+Host 0 -- ip 10.100.8.249 -- ranks 0 - 23
+Host 1 -- ip 10.100.9.22 -- ranks 24 - 31
+
+ host | 0    1
+======|===========
+    0 : SHM  TCP
+    1 : TCP  SHM
+
+ Prot -  All Intra-node communication is: SHM
+ Prot -  All Inter-node communication is: TCP
+
+problem size: 1000000000 dist: 31622.776602 time taken 8.554403
+
+
+PS:
+
+Read file <error> for stderr output of this job.
+

@@ -1,0 +1,295 @@
+Sender: LSF System <lsfadmin@compute-0-004>
+Subject: Job 565644: <Brian-Hello-Mp> in cluster <mghpcc_cluster1> Done
+
+Job <Brian-Hello-Mp> was submitted from host <discovery4> by user <crafton.b> in cluster <mghpcc_cluster1>.
+Job was executed on host(s) <10*compute-0-004>, in queue <ht-10g>, as user <crafton.b> in cluster <mghpcc_cluster1>.
+</home/crafton.b> was used as the home directory.
+</home/crafton.b/hello_world_mp> was used as the working directory.
+Started at Thu Feb  4 01:08:40 2016
+Results reported at Thu Feb  4 01:12:00 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+
+#BSUB -J Brian-Hello-Mp
+#BSUB -o output_file
+#BSUB -e error_file
+#BSUB -n 10
+#BSUB -q ht-10g
+#BSUB cwd /home/crafton.b/hello_world_mp/
+cd /home/crafton.b/hello_world_mp/
+
+rm output_file
+rm error_file
+
+rm a
+g++ -o a distance_sequential.c
+
+./a 10000000
+./a 100000000
+./a 1000000000
+
+rm a
+g++ -fopenmp -o a distance2.c
+
+./a 10000000 1
+./a 100000000 1
+./a 1000000000 1
+
+./a 10000000 4
+./a 100000000 4
+./a 1000000000 4
+
+./a 10000000 10
+./a 100000000 10
+./a 1000000000 10
+
+./a 10000000 8
+./a 100000000 8
+./a 1000000000 8
+
+./a 10000000 16
+./a 100000000 16
+./a 1000000000 16
+
+./a 10000000 20
+./a 100000000 20
+./a 1000000000 20
+
+./a 10000000 30
+./a 100000000 30
+./a 1000000000 30
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :               546.69 sec.
+    Max Memory :             22665 MB
+    Average Memory :         10095.57 MB
+    Total Requested Memory : -
+    Delta Memory :           -
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               23130 MB
+
+    Max Processes :          4
+    Max Threads :            5
+
+The output (if any) follows:
+
+Problem Size: 10000000
+Solution: 18357133312.000000
+time used: 0.170000
+-------------------
+Problem Size: 100000000
+Solution: 492824756224.000000
+time used: 0.780000
+-------------------
+Problem Size: 1000000000
+Solution: 4398046511104.000000
+time used: 7.940000
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.419205
+time used: 0.075904
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.222412
+time used: 0.750449
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139626.148438
+time used: 8.008706
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.412239
+time used: 0.042644
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.170166
+time used: 0.408221
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139627.101562
+time used: 2.337339
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.407173
+time used: 0.018817
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.090088
+time used: 0.168758
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139624.445312
+time used: 1.242598
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.408272
+time used: 0.012582
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.132080
+time used: 0.206450
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139624.953125
+time used: 1.421526
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.405235
+time used: 0.010087
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.080811
+time used: 0.112177
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139626.562500
+time used: 1.197167
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.404427
+time used: 0.011382
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.064941
+time used: 0.154891
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139625.765625
+time used: 1.313331
+-------------------
+Problem Size: 10000000
+Solution: 36514779656.162354
+time used: 0.012527
+-------------------
+Problem Size: 100000000
+Solution: 1154700356513.971924
+time used: 0.148532
+-------------------
+Problem Size: 1000000000
+Solution: 36514836591902.609375
+time used: 1.338987
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.402832
+time used: 0.035156
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.054199
+time used: 0.131161
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139625.570312
+time used: 1.285785
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.419205
+time used: 0.132275
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.222412
+time used: 0.931806
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139626.148438
+time used: 9.879087
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.412239
+time used: 0.051010
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.170166
+time used: 0.498330
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139627.101562
+time used: 2.908955
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.407173
+time used: 0.022522
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.090088
+time used: 0.208453
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139624.445312
+time used: 1.547214
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.408272
+time used: 0.015107
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.132080
+time used: 0.257055
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139624.953125
+time used: 2.053245
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.405235
+time used: 0.019562
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.080566
+time used: 0.135456
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139626.562500
+time used: 1.683573
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.404434
+time used: 0.018740
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.064941
+time used: 0.171097
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139625.765625
+time used: 2.066982
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.403053
+time used: 0.016266
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.048096
+time used: 0.174512
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139625.164062
+time used: 1.731700
+-------------------
+Problem Size: 10000000
+Solution: 36514834428.402832
+time used: 0.036309
+-------------------
+Problem Size: 100000000
+Solution: 1154700529719.054443
+time used: 0.154057
+-------------------
+Problem Size: 1000000000
+Solution: 36514837139625.562500
+time used: 1.764490
+-------------------
+
+
+PS:
+
+Read file <error_file> for stderr output of this job.
+

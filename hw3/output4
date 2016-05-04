@@ -1,0 +1,100 @@
+Sender: LSF System <lsfadmin@compute-0-005>
+Subject: Job 584132: <Brian-Hello> in cluster <mghpcc_cluster1> Done
+
+Job <Brian-Hello> was submitted from host <discovery4> by user <crafton.b> in cluster <mghpcc_cluster1>.
+Job was executed on host(s) <4*compute-0-005>, in queue <ht-10g>, as user <crafton.b> in cluster <mghpcc_cluster1>.
+</home/crafton.b> was used as the home directory.
+</home/crafton.b/hello_world_mpi> was used as the working directory.
+Started at Wed Feb 17 19:34:36 2016
+Results reported at Wed Feb 17 19:34:59 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -J Brian-Hello
+#BSUB -o output4
+#BSUB -e error
+#BSUB -n 4
+#BSUB -R "span[ptile=5]"
+#BSUB -q ht-10g
+#BSUB cwd /home/crafton.b/hello_world_mpi/
+cd /home/crafton.b/hello_world_mpi/
+
+rm error
+rm hello_mpi
+rm output4
+
+tempfile1=hostlistrun
+tempfile2=hostlist-tcp
+echo $LSB_MCPU_HOSTS > $tempfile1
+declare -a hosts
+read -a hosts < ${tempfile1}
+for ((i=0; i<${#hosts[@]}; i += 2)) ;
+ do
+ HOST=${hosts[$i]}
+ CORE=${hosts[(($i+1))]}
+ echo $HOST:$CORE >> $tempfile2
+done
+
+mpiCC -o hello_mpi q4.cpp
+mpirun -np 4 -prot -TCP -lsf ./hello_mpi 10000000
+
+mpiCC -o hello_mpi q4.cpp
+mpirun -np 4 -prot -TCP -lsf ./hello_mpi 100000000
+
+mpiCC -o hello_mpi q4.cpp
+mpirun -np 4 -prot -TCP -lsf ./hello_mpi 1000000000
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :               81.92 sec.
+    Max Memory :             14 MB
+    Average Memory :         14.00 MB
+    Total Requested Memory : -
+    Delta Memory :           -
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               59 MB
+
+    Max Processes :          1
+    Max Threads :            1
+
+The output (if any) follows:
+
+Host 0 -- ip 10.100.8.45 -- ranks 0 - 3
+
+ host | 0
+======|======
+    0 : SHM
+
+ Prot -  All Intra-node communication is: SHM
+
+problem size: 10000000 dist: 3162.277660 time taken 0.203600
+Host 0 -- ip 10.100.8.45 -- ranks 0 - 3
+
+ host | 0
+======|======
+    0 : SHM
+
+ Prot -  All Intra-node communication is: SHM
+
+problem size: 100000000 dist: 10000.000000 time taken 1.014187
+Host 0 -- ip 10.100.8.45 -- ranks 0 - 3
+
+ host | 0
+======|======
+    0 : SHM
+
+ Prot -  All Intra-node communication is: SHM
+
+problem size: 1000000000 dist: 31622.776602 time taken 9.685233
+
+
+PS:
+
+Read file <error> for stderr output of this job.
+

@@ -1,0 +1,162 @@
+Sender: LSF System <lsfadmin@compute-0-009>
+Subject: Job 556420: <EucDist> in cluster <mghpcc_cluster1> Done
+
+Job <EucDist> was submitted from host <discovery4> by user <crafton.b> in cluster <mghpcc_cluster1>.
+Job was executed on host(s) <compute-0-009>, in queue <ser-par-10g>, as user <crafton.b> in cluster <mghpcc_cluster1>.
+</home/crafton.b> was used as the home directory.
+</home/crafton.b/hello_world> was used as the working directory.
+Started at Tue Jan 26 19:49:27 2016
+Results reported at Tue Jan 26 19:49:36 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -J EucDist
+#BSUB -o output_file
+#BSUB -e error file
+#BSUB -n l
+#BSUB -q ht-10g
+#BSUB cwd /home/crafton.b/hello_world/
+
+work=/home/crafton.b/hello_world/
+cd $work
+./a 10000000
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :               0.47 sec.
+    Max Memory :             13 MB
+    Average Memory :         13.00 MB
+    Total Requested Memory : -
+    Delta Memory :           -
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               55 MB
+
+    Max Processes :          1
+    Max Threads :            1
+
+The output (if any) follows:
+
+num args: 2 vector length: 10000000
+Euclidean distance between v1 and v2 is 18357133312.000000
+success
+time used: 0.420000
+
+PS:
+
+Read file <error> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@compute-0-009>
+Subject: Job 556424: <EucDist> in cluster <mghpcc_cluster1> Done
+
+Job <EucDist> was submitted from host <discovery4> by user <crafton.b> in cluster <mghpcc_cluster1>.
+Job was executed on host(s) <compute-0-009>, in queue <ser-par-10g>, as user <crafton.b> in cluster <mghpcc_cluster1>.
+</home/crafton.b> was used as the home directory.
+</home/crafton.b/hello_world> was used as the working directory.
+Started at Tue Jan 26 20:10:27 2016
+Results reported at Tue Jan 26 20:10:30 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -J EucDist
+#BSUB -o output_file
+#BSUB -e error file
+#BSUB -n l
+#BSUB -q ht-10g
+#BSUB cwd /home/crafton.b/hello_world/
+
+work=/home/crafton.b/hello_world/
+cd $work
+./a 100000000
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :               2.43 sec.
+    Max Memory :             13 MB
+    Average Memory :         13.00 MB
+    Total Requested Memory : -
+    Delta Memory :           -
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               56 MB
+
+    Max Processes :          1
+    Max Threads :            1
+
+The output (if any) follows:
+
+num args: 2 vector length: 100000000
+Euclidean distance between v1 and v2 is 492824756224.000000
+success
+time used: 2.370000
+
+PS:
+
+Read file <error> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@compute-0-001>
+Subject: Job 556427: <EucDist> in cluster <mghpcc_cluster1> Done
+
+Job <EucDist> was submitted from host <discovery4> by user <crafton.b> in cluster <mghpcc_cluster1>.
+Job was executed on host(s) <compute-0-001>, in queue <ser-par-10g>, as user <crafton.b> in cluster <mghpcc_cluster1>.
+</home/crafton.b> was used as the home directory.
+</home/crafton.b/hello_world> was used as the working directory.
+Started at Tue Jan 26 20:18:28 2016
+Results reported at Tue Jan 26 20:18:50 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -J EucDist
+#BSUB -o output_file
+#BSUB -e error file
+#BSUB -n l
+#BSUB -q ht-10g
+#BSUB cwd /home/crafton.b/hello_world/
+
+work=/home/crafton.b/hello_world/
+cd $work
+./a 1000000000
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :               20.87 sec.
+    Max Memory :             14 MB
+    Average Memory :         14.00 MB
+    Total Requested Memory : -
+    Delta Memory :           -
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               57 MB
+
+    Max Processes :          1
+    Max Threads :            1
+
+The output (if any) follows:
+
+num args: 2 vector length: 1000000000
+Euclidean distance between v1 and v2 is 4398046511104.000000
+success
+time used: 20.770000
+
+PS:
+
+Read file <error> for stderr output of this job.
+

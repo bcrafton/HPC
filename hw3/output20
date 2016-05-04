@@ -1,0 +1,241 @@
+Sender: LSF System <lsfadmin@compute-0-007>
+Subject: Job 584071: <Brian-Hello> in cluster <mghpcc_cluster1> Done
+
+Job <Brian-Hello> was submitted from host <discovery4> by user <crafton.b> in cluster <mghpcc_cluster1>.
+Job was executed on host(s) <5*compute-0-007>, in queue <ht-10g>, as user <crafton.b> in cluster <mghpcc_cluster1>.
+                            <5*compute-0-005>
+                            <5*compute-0-004>
+                            <5*compute-0-006>
+</home/crafton.b> was used as the home directory.
+</home/crafton.b/hello_world_mpi> was used as the working directory.
+Started at Wed Feb 17 19:13:07 2016
+Results reported at Wed Feb 17 19:13:57 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -J Brian-Hello
+#BSUB -o output20
+#BSUB -e error
+#BSUB -n 20
+#BSUB -R "span[ptile=5]"
+#BSUB -q ht-10g
+#BSUB cwd /home/crafton.b/hello_world_mpi/
+cd /home/crafton.b/hello_world_mpi/
+
+rm error
+rm hello_mpi
+rm output20
+
+tempfile1=hostlistrun
+tempfile2=hostlist-tcp
+echo $LSB_MCPU_HOSTS > $tempfile1
+declare -a hosts
+read -a hosts < ${tempfile1}
+for ((i=0; i<${#hosts[@]}; i += 2)) ;
+ do
+ HOST=${hosts[$i]}
+ CORE=${hosts[(($i+1))]}
+ echo $HOST:$CORE >> $tempfile2
+done
+
+mpiCC -o hello_mpi q1.cpp
+mpirun -np 20 -prot -TCP -lsf ./hello_mpi
+
+mpiCC -o hello_mpi q2.cpp
+mpirun -np 20 -prot -TCP -lsf ./hello_mpi
+
+mpiCC -o hello_mpi q3.cpp
+mpirun -np 20 -prot -TCP -lsf ./hello_mpi
+
+mpiCC -o hello_mpi q4.cpp
+mpirun -np 20 -prot -TCP -lsf ./hello_mpi 10000000
+
+mpiCC -o hello_mpi q4.cpp
+mpirun -np 20 -prot -TCP -lsf ./hello_mpi 100000000
+
+mpiCC -o hello_mpi q4.cpp
+mpirun -np 20 -prot -TCP -lsf ./hello_mpi 1000000000
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :               464.20 sec.
+    Max Memory :             2189 MB
+    Average Memory :         14.00 MB
+    Total Requested Memory : -
+    Delta Memory :           -
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               6033 MB
+
+    Max Processes :          7
+    Max Threads :            7
+
+The output (if any) follows:
+
+Host 0 -- ip 10.100.8.47 -- ranks 0 - 4
+Host 1 -- ip 10.100.8.45 -- ranks 5 - 9
+Host 2 -- ip 10.100.8.44 -- ranks 10 - 14
+Host 3 -- ip 10.100.8.46 -- ranks 15 - 19
+
+ host | 0    1    2    3
+======|=====================
+    0 : SHM  TCP  TCP  TCP
+    1 : TCP  SHM  TCP  TCP
+    2 : TCP  TCP  SHM  TCP
+    3 : TCP  TCP  TCP  SHM
+
+ Prot -  All Intra-node communication is: SHM
+ Prot -  All Inter-node communication is: TCP
+
+time taken: 0.017820
+Message from process =3 : Hello, world
+Message from process =15 : Hello, world
+Message from process =5 : Hello, world
+Message from process =14 : Hello, world
+Message from process =1 : Hello, world
+Message from process =2 : Hello, world
+Message from process =0 : Hello, world
+Message from process =4 : Hello, world
+Message from process =10 : Hello, world
+Message from process =12 : Hello, world
+Message from process =11 : Hello, world
+Message from process =18 : Hello, world
+Message from process =19 : Hello, world
+Message from process =6 : Hello, world
+Message from process =7 : Hello, world
+Message from process =9 : Hello, world
+Message from process =13 : Hello, world
+Message from process =16 : Hello, world
+Message from process =8 : Hello, world
+Message from process =17 : Hello, world
+Host 0 -- ip 10.100.8.47 -- ranks 0 - 4
+Host 1 -- ip 10.100.8.45 -- ranks 5 - 9
+Host 2 -- ip 10.100.8.44 -- ranks 10 - 14
+Host 3 -- ip 10.100.8.46 -- ranks 15 - 19
+
+ host | 0    1    2    3
+======|=====================
+    0 : SHM  TCP  TCP  TCP
+    1 : TCP  SHM  TCP  TCP
+    2 : TCP  TCP  SHM  TCP
+    3 : TCP  TCP  TCP  SHM
+
+ Prot -  All Intra-node communication is: SHM
+ Prot -  All Inter-node communication is: TCP
+
+time taken: 0.001819
+Message from process =3 : Hello, world
+Message from process =15 : Hello, world
+Message from process =9 : Hello, world
+Message from process =5 : Hello, world
+Message from process =11 : Hello, world
+Message from process =0 : Hello, world
+Message from process =1 : Hello, world
+Message from process =2 : Hello, world
+Message from process =4 : Hello, world
+Message from process =12 : Hello, world
+Message from process =10 : Hello, world
+Message from process =13 : Hello, world
+Message from process =6 : Hello, world
+Message from process =7 : Hello, world
+Message from process =19 : Hello, world
+Message from process =17 : Hello, world
+Message from process =18 : Hello, world
+Message from process =14 : Hello, world
+Message from process =8 : Hello, world
+Message from process =16 : Hello, world
+Host 0 -- ip 10.100.8.47 -- ranks 0 - 4
+Host 1 -- ip 10.100.8.45 -- ranks 5 - 9
+Host 2 -- ip 10.100.8.44 -- ranks 10 - 14
+Host 3 -- ip 10.100.8.46 -- ranks 15 - 19
+
+ host | 0    1    2    3
+======|=====================
+    0 : SHM  TCP  TCP  TCP
+    1 : TCP  SHM  TCP  TCP
+    2 : TCP  TCP  SHM  TCP
+    3 : TCP  TCP  TCP  SHM
+
+ Prot -  All Intra-node communication is: SHM
+ Prot -  All Inter-node communication is: TCP
+
+Process 1 received value 0 from process 0
+Process 2 received value 1 from process 1
+Process 3 received value 2 from process 2
+Process 4 received value 3 from process 3
+Process 5 received value 4 from process 4
+Process 10 received value 9 from process 9
+Process 15 received value 14 from process 14
+Process 0 received value 19 from process 19
+time taken: 0.025228
+Process 6 received value 5 from process 5
+Process 7 received value 6 from process 6
+Process 8 received value 7 from process 7
+Process 9 received value 8 from process 8
+Process 11 received value 10 from process 10
+Process 12 received value 11 from process 11
+Process 13 received value 12 from process 12
+Process 14 received value 13 from process 13
+Process 16 received value 15 from process 15
+Process 17 received value 16 from process 16
+Process 18 received value 17 from process 17
+Process 19 received value 18 from process 18
+Host 0 -- ip 10.100.8.47 -- ranks 0 - 4
+Host 1 -- ip 10.100.8.45 -- ranks 5 - 9
+Host 2 -- ip 10.100.8.44 -- ranks 10 - 14
+Host 3 -- ip 10.100.8.46 -- ranks 15 - 19
+
+ host | 0    1    2    3
+======|=====================
+    0 : SHM  TCP  TCP  TCP
+    1 : TCP  SHM  TCP  TCP
+    2 : TCP  TCP  SHM  TCP
+    3 : TCP  TCP  TCP  SHM
+
+ Prot -  All Intra-node communication is: SHM
+ Prot -  All Inter-node communication is: TCP
+
+problem size: 10000000 dist: 3162.277660 time taken 0.137702
+Host 0 -- ip 10.100.8.47 -- ranks 0 - 4
+Host 1 -- ip 10.100.8.45 -- ranks 5 - 9
+Host 2 -- ip 10.100.8.44 -- ranks 10 - 14
+Host 3 -- ip 10.100.8.46 -- ranks 15 - 19
+
+ host | 0    1    2    3
+======|=====================
+    0 : SHM  TCP  TCP  TCP
+    1 : TCP  SHM  TCP  TCP
+    2 : TCP  TCP  SHM  TCP
+    3 : TCP  TCP  TCP  SHM
+
+ Prot -  All Intra-node communication is: SHM
+ Prot -  All Inter-node communication is: TCP
+
+problem size: 100000000 dist: 10000.000000 time taken 1.131609
+Host 0 -- ip 10.100.8.47 -- ranks 0 - 4
+Host 1 -- ip 10.100.8.45 -- ranks 5 - 9
+Host 2 -- ip 10.100.8.44 -- ranks 10 - 14
+Host 3 -- ip 10.100.8.46 -- ranks 15 - 19
+
+ host | 0    1    2    3
+======|=====================
+    0 : SHM  TCP  TCP  TCP
+    1 : TCP  SHM  TCP  TCP
+    2 : TCP  TCP  SHM  TCP
+    3 : TCP  TCP  TCP  SHM
+
+ Prot -  All Intra-node communication is: SHM
+ Prot -  All Inter-node communication is: TCP
+
+problem size: 1000000000 dist: 31622.776602 time taken 11.427813
+
+
+PS:
+
+Read file <error> for stderr output of this job.
+
